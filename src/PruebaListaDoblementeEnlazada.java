@@ -157,4 +157,86 @@ class ListaDoblementeEnlazada{
 			System.out.println("No hay elementos");
 		}
 	}
+	
+	// 3b) eliminar elemento al FINAL
+		public Nodo eliminarInicio() {	
+			if(verificarListaVacia()) {
+				System.out.println("Sin elementos");
+				return null;
+			}else {
+				Nodo tmp = nodoInicio;
+				
+				if(nodoInicio==nodoFin) {
+					vaciar();
+					return tmp;
+				}else {
+					nodoInicio = nodoInicio.getNodoSiguiente();
+					nodoInicio.setNodoAnterior(null);
+				}
+				
+				return tmp;
+			}
+		}
+		
+		// 3b) eliminar elemento al FINAL
+		public Nodo eliminarFin() {
+			if(verificarListaVacia()) {
+				System.out.println("Sin elementos");
+				return null;
+			}else {
+				Nodo tmp = nodoFin;
+				
+				if(nodoInicio==nodoFin) {
+					vaciar();
+					return tmp;
+				}else {
+					nodoFin = nodoFin.getNodoAnterior();
+					nodoFin.setNodoSiguiente(null);
+				}
+				return tmp;
+			}
+		}
+		
+		public Nodo eliminarElementoEspecifico(int dato) {
+			if(verificarListaVacia()) {
+				System.out.println("Sin elementos");
+				return null;
+			}else {
+				Nodo tmp = null;
+				
+				if(nodoInicio==nodoFin && nodoInicio.getDato()==dato && nodoFin.getDato()==dato) {
+					tmp=nodoInicio;
+					vaciar();
+					return tmp;
+				}else if(nodoInicio.getDato()==dato) {
+					tmp=nodoInicio;
+					nodoInicio=nodoInicio.getNodoSiguiente();
+					nodoInicio.setNodoAnterior(null);
+				}else if(nodoFin.getDato()==dato){
+					tmp=nodoFin;
+					nodoFin=nodoFin.getNodoAnterior();
+					nodoFin.setNodoSiguiente(null);
+				}else {
+					Nodo adelante = nodoInicio;
+					Nodo anterior = null;
+					
+					while(adelante!=null) {
+						if(adelante.getDato()!=dato) {
+							anterior=adelante;
+							adelante=adelante.getNodoSiguiente();
+						}else {
+							break;
+						}
+					}
+					
+					if(adelante!=null) {
+						tmp=anterior.getNodoSiguiente();
+						adelante.getNodoSiguiente().setNodoAnterior(anterior);
+						anterior.setNodoSiguiente(adelante.getNodoSiguiente());
+					}
+					
+				}
+				return tmp;
+			}
+		}
 }
