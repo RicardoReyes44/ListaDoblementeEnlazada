@@ -105,4 +105,20 @@ class ListaDoblementeEnlazada{
 	    nodoInicio = nodoFin = null;
 		return true;
 	}
+	
+	public void mostrarPrimero() {
+		if(verificarListaVacia()) {
+			System.out.println("No hay elementos");
+		}else {
+			System.out.println(nodoInicio);
+		}
+	}
+
+	public void mostrarUltimo() {
+		if(verificarListaVacia()) {
+			System.out.println("No hay elementos");
+		}else {
+			System.out.println(nodoFin);
+		}
+	}
 }
