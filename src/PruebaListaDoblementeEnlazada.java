@@ -43,17 +43,6 @@ class Nodo {
 	
 }
 
-/*
- * OPERACIONES BASICAS
- *   1) Creacion
- *   2) Insercion
- *     2a)Al inicio
- *     2b)Al final
- *   3) Eliminacion
- *     3a)Al inicio
- *     3b)Al final
- * */
-
 class ListaDoblementeEnlazada{
 	
 	private Nodo nodoInicio;
