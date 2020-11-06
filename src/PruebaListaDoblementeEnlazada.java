@@ -53,3 +53,56 @@ class Nodo {
  *     3a)Al inicio
  *     3b)Al final
  * */
+
+class ListaDoblementeEnlazada{
+	
+	private Nodo nodoInicio;
+	private Nodo nodoFin;
+	
+	// 1) Creacion
+	public ListaDoblementeEnlazada() {}
+	
+	public int getNumeroElementos() {
+		int num = 0;
+		for(Nodo tmp=nodoInicio; tmp!=null; tmp=tmp.getNodoSiguiente())
+			num++;
+		return num;
+	}
+
+	// 2a) Insertar/Agregar elemento al INICIO
+	public boolean agregarInicio(int dato) {
+		Nodo nuevo = new Nodo(dato);
+		
+		if(verificarListaVacia()) {
+			nodoInicio = nodoFin = nuevo;
+		}else {
+			nuevo.setNodoSiguiente(nodoInicio);
+			nodoFin.setNodoAnterior(nuevo);
+			nodoInicio = nuevo;
+		}
+		return true;
+	}
+	
+	// 2b) Insertar/Agregar elemento al FINAL
+	public boolean agregarFin(int dato) {
+		Nodo nuevo = new Nodo(dato);
+		
+		if(verificarListaVacia()) {
+			nodoInicio = nodoFin = nuevo;
+		}else {
+			nodoFin.setNodoSiguiente(nuevo);
+			nuevo.setNodoAnterior(nodoFin);
+			nodoFin = nuevo;
+		}
+		return true;
+	}
+
+	public boolean verificarListaVacia() {
+		return nodoInicio==null;
+	}
+
+	public boolean vaciar() {
+	    nodoInicio = nodoFin = null;
+		return true;
+	}
+}
