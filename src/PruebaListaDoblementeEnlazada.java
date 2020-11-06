@@ -121,4 +121,40 @@ class ListaDoblementeEnlazada{
 			System.out.println(nodoFin);
 		}
 	}
+	
+	public void verLista() {
+		if(verificarListaVacia()) {
+			System.out.println("No hay elementos");
+		}else {
+            Nodo nodoActual = nodoInicio;
+			
+			while(nodoActual != null) {
+				System.out.print("<--["+nodoActual.getDato()+"]-->");
+				nodoActual = nodoActual.getNodoSiguiente();
+			}
+		}
+	}
+	
+	public void buscarElemento(int numero) {
+		if(!verificarListaVacia()) {
+			Nodo tmp = nodoInicio;
+			boolean encontrado = false;
+			
+			while(tmp!=null) {
+				if(tmp.getDato()==numero) {
+					encontrado = true;
+					break;
+				}
+				tmp = tmp.getNodoSiguiente();
+			}
+			
+			if(encontrado) {
+				System.out.println("Encontrado!");
+			}else {
+				System.out.println("No se ha encontrado");
+			}
+		}else {
+			System.out.println("No hay elementos");
+		}
+	}
 }
